@@ -7,3 +7,16 @@
 <h2>Blind Date With a Book</h2>
 <br />
 <p>You got @Model.Book.Name</p>
+<hr />
+@if (Model.Customers.Count == 0)
+{
+    <h3>Call copies of this book are in currently.</h3>
+} else {
+<p>Currently checked out by:</p>
+<ul>
+@foreach (var customer in Model.Customers)
+{
+    <li>@customer.Name</li>
+}
+</ul>
+}
