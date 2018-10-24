@@ -38,17 +38,16 @@ namespace Libby.Controllers
         // GET: Books
         public ActionResult Index(int? pageIndex, string sortBy)
         {
-            if (!pageIndex.HasValue)
+            var books = new BooksIndexViewModel()
             {
-                pageIndex = 1;
-            }
+                BookList = new List<Book>
+                {
+                    new Book{ID = 1, Name = "Dances With Wolves" },
+                    new Book{ID = 2, Name = "Dune" }
+                }
+            };
 
-            if (String.IsNullOrWhiteSpace(sortBy))
-            {
-                sortBy = "name";
-            }
-
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+            return View(books);
         }
 
         [Route("books/released/{year}/{month:regex(\\d{2}):range(1,12)}")]

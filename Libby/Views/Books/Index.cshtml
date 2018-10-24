@@ -1,0 +1,21 @@
+﻿@model Libby.ViewModels.BooksIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Our Books</h2>
+<hr />
+@if (Model.BookList.Count == 0)
+{
+    <p>We do not have any books</p>
+}
+else
+{
+    <ul>
+        @foreach (var book in Model.BookList)
+        {
+            <li><a href="http://localhost:62150/Books/@book.ID">@book.Name</a></li>
+        }
+    </ul>
+}
