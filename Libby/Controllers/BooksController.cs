@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Libby.Models;
+using Libby.ViewModels;
 
 namespace Libby.Controllers
 {
@@ -14,7 +15,18 @@ namespace Libby.Controllers
         {
             var book = new Book() {Name = "Dances With Wolves" };
 
-            return View(book);
+            var customers = new List<Customer>
+            {
+                new Customer {Name = "Customer 1", Id = 1},
+                new Customer {Name = "Customer 2", Id = 2 }
+            };
+
+            var viewModel = new RandomBookViewModel
+            {
+                Book = book,
+                Customers = customers
+            };
+            return View(viewModel);
         }
 
         //GET: Books/Edit/ID
