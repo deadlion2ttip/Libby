@@ -1,0 +1,20 @@
+﻿@model Libby.ViewModels.CustomerIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers:</h2>
+@if (Model.Customers.Count == 0)
+{
+    <p>There are no customers yet.</p>
+} else
+{
+    <ul>
+    @foreach (var customer in Model.Customers)
+    {
+        <li><a  href="http://localhost:62150/Customers/@customer.Id">@customer.Name</a></li>
+    }
+    </ul>
+}
+
